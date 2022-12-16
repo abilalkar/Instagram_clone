@@ -26,10 +26,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 'assets/ic_instagram.svg',
                 color: primaryColor,
                 height: 48.0,
-              )
-              //
-              //
-              //svg image
+              ),
+              SizedBox(
+                height: 64.0,
+              ),
+
               //text field for email
               //text field for password
               //button login
