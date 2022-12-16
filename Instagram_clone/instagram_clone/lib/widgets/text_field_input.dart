@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class TextFieldInput extends StatelessWidget {
   final TextEditingController textEditingController;
-  final bool isPass;
+  final bool isPassword;
   final String hintText;
   final TextInputType textInputType;
   const TextFieldInput(
       {super.key,
       required this.textEditingController,
-      required this.isPass,
+      this.isPassword = false,
       required this.hintText,
       required this.textInputType});
 
@@ -27,7 +27,7 @@ class TextFieldInput extends StatelessWidget {
         contentPadding: EdgeInsets.all(8),
       ),
       keyboardType: textInputType,
-      obscureText: isPass,
+      obscureText: isPassword,
     );
   }
 }
