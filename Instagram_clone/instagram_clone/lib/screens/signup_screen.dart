@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,6 +24,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   Uint8List? _image;
+  bool _isLoading = false;
+
   @override
   void dispose() {
     super.dispose();
@@ -135,7 +139,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                   ),
-                  child: Text("Sign up"),
+                  child: _isLoading
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : Text("Sign up"),
                 ),
               ),
               SizedBox(
@@ -173,6 +181,10 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void sigUpUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+
     String res = await AuthMethods().signUpUser(
       email: _emailController.text,
       password: _passwordController.text,
@@ -180,6 +192,14 @@ class _SignupScreenState extends State<SignupScreen> {
       bio: _bioController.text,
       file: _image!,
     );
-    print(res);
+
+    if (res != 'success') {
+      showSnackBar(res, context);
+      setState(() {
+        _isLoading = false;
+      });
+    } else {
+      //TODO
+    }
   }
 }
