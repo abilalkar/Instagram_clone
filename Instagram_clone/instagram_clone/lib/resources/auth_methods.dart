@@ -30,6 +30,7 @@ class AuthMethods {
             email: email, password: password);
         //add user to database
         await _firestore.collection('users').doc(credential.user!.uid).set({
+          //keeps ids of users identical in the storage
           'username': username,
           'uid': credential.user!.uid,
           'email': email,
@@ -37,6 +38,7 @@ class AuthMethods {
           'followers': [],
           'following': [],
         });
+
         res = "success";
       }
     } catch (e) {

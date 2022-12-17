@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:instagram_clone/utils/colors.dart';
+import 'package:instagram_clone/utils/utils.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -62,7 +64,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     bottom: -10,
                     left: 80,
                     child: IconButton(
-                      onPressed: (() {}),
+                      onPressed: (() async {
+                        await pickImage(ImageSource.gallery);
+                      }),
                       icon: Icon(Icons.add_a_photo),
                     ),
                   ),
