@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instagram_clone/resources/auth_methods.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/utils/utils.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
@@ -23,7 +24,6 @@ class _SignupScreenState extends State<SignupScreen> {
   Uint8List? _image;
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -122,6 +122,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               InkWell(
+                onTap: () async {
+                  String res = await AuthMethods().signUpUser(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                    username: _usernameController.text,
+                    bio: _bioController.text,
+                    file: _image!,
+                  );
+                  print(res);
+                },
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
@@ -134,15 +144,15 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                   ),
-                  child: Text("Log in"),
+                  child: Text("Sign up"),
                 ),
               ),
               SizedBox(
                 height: 12,
               ),
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
