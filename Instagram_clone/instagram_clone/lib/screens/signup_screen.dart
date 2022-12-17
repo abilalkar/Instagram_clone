@@ -5,22 +5,26 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _bioController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _bioController.dispose();
+    _usernameController.dispose();
   }
 
   @override
@@ -34,8 +38,8 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
               SvgPicture.asset(
                 'assets/ic_instagram.svg',
@@ -44,6 +48,15 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(
                 height: 64.0,
+              ),
+              TextFieldInput(
+                hintText: "username",
+                textInputType: TextInputType.text,
+                textEditingController: _usernameController,
+                isPassword: false,
+              ),
+              SizedBox(
+                height: 24,
               ),
               TextFieldInput(
                 hintText: "email",
@@ -59,6 +72,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 textInputType: TextInputType.text,
                 textEditingController: _passwordController,
                 isPassword: true,
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              TextFieldInput(
+                hintText: "bio",
+                textInputType: TextInputType.text,
+                textEditingController: _bioController,
+                isPassword: false,
               ),
               SizedBox(
                 height: 24,
