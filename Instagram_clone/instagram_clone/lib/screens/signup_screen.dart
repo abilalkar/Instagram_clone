@@ -141,7 +141,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   child: _isLoading
                       ? Center(
-                          child: CircularProgressIndicator(),
+                          child: CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
                         )
                       : Text("Sign up"),
                 ),
@@ -198,8 +200,6 @@ class _SignupScreenState extends State<SignupScreen> {
       setState(() {
         _isLoading = false;
       });
-    } else {
-      //TODO
     }
   }
 }
