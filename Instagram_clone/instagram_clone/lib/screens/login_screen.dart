@@ -34,8 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
               SvgPicture.asset(
                 'assets/ic_instagram.svg',
@@ -83,17 +83,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 12,
               ),
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text("Don't have account?"),
+                    child: Text("Don't have account? "),
                   ),
                   GestureDetector(
+                    onTap: () {
+                      //Navigator.push(context, route)
+                    },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(

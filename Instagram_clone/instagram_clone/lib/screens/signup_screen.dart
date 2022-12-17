@@ -49,6 +49,8 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(
                 height: 64.0,
               ),
+              //circular widget to accept and show our selected file
+
               TextFieldInput(
                 hintText: "username",
                 textInputType: TextInputType.text,
@@ -113,13 +115,13 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text("Don't have account?"),
+                    child: Text("Already have an account? "),
                   ),
                   GestureDetector(
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
-                        "Sign up.",
+                        "Log in.",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
