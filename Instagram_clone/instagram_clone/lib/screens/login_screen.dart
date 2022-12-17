@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Flexible(
                 child: Container(),
-                flex: 0,
+                flex: 2,
               ),
               SvgPicture.asset(
                 'assets/ic_instagram.svg',
@@ -77,7 +77,30 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              //button login
+              SizedBox(
+                height: 12,
+              ),
+              Flexible(
+                child: Container(),
+                flex: 2,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text("Don't have account?"),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(
+                      "Sign up.",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              )
+
               //sign up etc
             ],
           ),
