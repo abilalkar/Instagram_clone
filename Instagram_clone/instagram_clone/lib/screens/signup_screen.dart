@@ -57,12 +57,18 @@ class _SignupScreenState extends State<SignupScreen> {
                     backgroundImage: NetworkImage(
                       "https://file.daktilo.com/themes/enerjik/assets/img/mask-16-9.png",
                     ),
-                  )
+                  ),
+                  Positioned(
+                    bottom: -10,
+                    left: 80,
+                    child: IconButton(
+                      onPressed: (() {}),
+                      icon: Icon(Icons.add_a_photo),
+                    ),
+                  ),
                 ],
               ),
-              Positioned(
-                  child: IconButton(
-                      onPressed: (() {}), icon: Icon(Icons.add_a_photo))),
+
               SizedBox(
                 height: 24,
               ),
