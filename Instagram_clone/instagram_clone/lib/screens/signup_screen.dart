@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,6 +50,22 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 64.0,
               ),
               //circular widget to accept and show our selected file
+              Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 64,
+                    backgroundImage: NetworkImage(
+                      "https://file.daktilo.com/themes/enerjik/assets/img/mask-16-9.png",
+                    ),
+                  )
+                ],
+              ),
+              Positioned(
+                  child: IconButton(
+                      onPressed: (() {}), icon: Icon(Icons.add_a_photo))),
+              SizedBox(
+                height: 24,
+              ),
 
               TextFieldInput(
                 hintText: "username",
