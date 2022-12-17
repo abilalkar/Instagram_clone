@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,6 +20,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  Uint8List? _image;
   @override
   void dispose() {
     // TODO: implement dispose
@@ -49,23 +51,29 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 48.0,
               ),
               SizedBox(
-                height: 64.0,
+                height: 32.0,
               ),
               //circular widget to accept and show our selected file
               Stack(
                 children: [
-                  CircleAvatar(
-                    radius: 64,
-                    backgroundImage: NetworkImage(
-                      "https://file.daktilo.com/themes/enerjik/assets/img/mask-16-9.png",
-                    ),
-                  ),
+                  _image != null
+                      ? CircleAvatar(
+                          radius: 64, backgroundImage: MemoryImage(_image!))
+                      : CircleAvatar(
+                          radius: 64,
+                          backgroundImage: NetworkImage(
+                            "https://media-exp1.licdn.com/dms/image/C5603AQHVz4NCIqaHWg/profile-displayphoto-shrink_800_800/0/1634835225793?e=2147483647&v=beta&t=gPm6MN0XyqdS5eAricGZ-dCi5h15mgpjlLUABf6sILk",
+                          ),
+                        ),
                   Positioned(
                     bottom: -10,
                     left: 80,
                     child: IconButton(
                       onPressed: (() async {
-                        await pickImage(ImageSource.gallery);
+                        Uint8List image = await pickImage(ImageSource.gallery);
+                        setState(() {
+                          _image = image;
+                        });
                       }),
                       icon: Icon(Icons.add_a_photo),
                     ),
